@@ -1093,7 +1093,7 @@
         "flow": "Przepływ",
         "regime": "Reżim",
         "btcTrend": "Trend BTC",
-        "hashRate": "Mining Difficulty",
+        "miningDifficulty": "Mining Difficulty",
         "mining": "Wydobycie",
         "fearGreed": "Strach &amp; Chciwość"
       }

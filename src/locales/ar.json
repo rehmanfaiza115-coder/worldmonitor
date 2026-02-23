@@ -1099,7 +1099,7 @@
         "flow": "التدفق",
         "regime": "النظام",
         "btcTrend": "اتجاه BTC",
-        "hashRate": "HMining Difficulty",
+        "miningDifficulty": "HMining Difficulty",
         "mining": "التعدين",
         "fearGreed": "الخوف &amp; الجشع"
       }

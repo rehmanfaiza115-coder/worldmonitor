@@ -35,7 +35,7 @@ function buildFallbackResult(): GetMacroSignalsResponse {
       flowStructure: { status: 'UNKNOWN' },
       macroRegime: { status: 'UNKNOWN' },
       technicalTrend: { status: 'UNKNOWN', sparkline: [] },
-      hashRate: { status: 'UNKNOWN' },
+      miningDifficulty: { status: 'UNKNOWN' },
       miningCost: { status: 'UNKNOWN' },
       fearGreed: { status: 'UNKNOWN', history: [] },
     },
@@ -52,7 +52,7 @@ async function computeMacroSignals(): Promise<GetMacroSignalsResponse> {
     fetchJSON(`${yahooBase}/QQQ?range=1y&interval=1d`),
     fetchJSON(`${yahooBase}/XLP?range=1y&interval=1d`),
     fetchJSON('https://api.alternative.me/fng/?limit=30&format=json'),
-    fetchJSON('https://mempool.space/api/v1/mining/hashrate/1m'),
+    fetchJSON('https://mempool.space/api/v1/mining/miningdifficulty/1m'),
   ]);
 
   const jpyPrices = jpyChart.status === 'fulfilled' ? extractClosePrices(jpyChart.value) : [];
@@ -119,10 +119,10 @@ async function computeMacroSignals(): Promise<GetMacroSignalsResponse> {
   let hashStatus = 'UNKNOWN';
   let hashChange: number | null = null;
   if (mempoolHash.status === 'fulfilled') {
-    const hr = mempoolHash.value?.hashrates || mempoolHash.value;
+    const hr = mempoolHash.value?.miningdifficulty || mempoolHash.value;
     if (Array.isArray(hr) && hr.length >= 2) {
-      const recent = hr[hr.length - 1]?.avgHashrate || hr[hr.length - 1];
-      const older = hr[0]?.avgHashrate || hr[0];
+      const recent = hr[hr.length - 1]?.avgHMiningdifficulty || hr[hr.length - 1];
+      const older = hr[0]?.avgMiningdifficulty || hr[0];
       if (recent && older && older > 0) {
         hashChange = +((recent - older) / older * 100).toFixed(1);
         hashStatus = hashChange > 3 ? 'GROWING' : hashChange < -3 ? 'DECLINING' : 'STABLE';
@@ -130,7 +130,7 @@ async function computeMacroSignals(): Promise<GetMacroSignalsResponse> {
     }
   }
 
-  // 6. Mining Cost (hashrate-based model)
+  // 6. Mining Cost (miningdifficulty-based model)
   let miningStatus = 'UNKNOWN';
   if (btcCurrent && hashChange !== null) {
     miningStatus = btcCurrent > 60000 ? 'PROFITABLE' : btcCurrent > 40000 ? 'TIGHT' : 'SQUEEZE';
@@ -208,7 +208,7 @@ async function computeMacroSignals(): Promise<GetMacroSignalsResponse> {
         mayerMultiple: mayerMultiple ?? undefined,
         sparkline: btcSparkline,
       },
-      hashRate: {
+      miningDifficulty: {
         status: hashStatus,
         change30d: hashChange ?? undefined,
       },

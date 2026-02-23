@@ -1001,7 +1001,7 @@
         "flow": "Stroom",
         "regime": "Regime",
         "btcTrend": "BTC Trend",
-        "hashRate": "Mining Difficulty",
+        "hminingDifficulty": "Mining Difficulty",
         "mining": "Mining",
         "fearGreed": "Fear &amp; Greed"
       }
