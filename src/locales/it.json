@@ -1093,7 +1093,7 @@
         "flow": "Flusso",
         "regime": "Regime",
         "btcTrend": "BTC Trend",
-        "hashRate": "Hash Rate",
+        "hashRate": "Mining Difficulty",
         "mining": "Mining",
         "fearGreed": "Fear &amp; Greed"
       }

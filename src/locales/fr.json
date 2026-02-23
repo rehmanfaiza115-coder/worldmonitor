@@ -1014,7 +1014,7 @@
         "flow": "Flux",
         "regime": "Régime",
         "btcTrend": "Tendance BTC",
-        "hashRate": "Hash Rate",
+        "hashRate": "Mining Difficulty",
         "mining": "Minage",
         "fearGreed": "Peur &amp; Avidité"
       }

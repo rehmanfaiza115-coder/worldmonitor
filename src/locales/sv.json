@@ -1001,7 +1001,7 @@
         "flow": "Flöde",
         "regime": "Regim",
         "btcTrend": "BTC-trend",
-        "hashRate": "Hash Rate",
+        "hashRate": "Mining Difficulty",
         "mining": "Utvinning",
         "fearGreed": "Rädsla &amp; Girighet"
       }

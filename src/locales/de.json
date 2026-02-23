@@ -1096,7 +1096,7 @@
         "flow": "Fluss",
         "regime": "Regime",
         "btcTrend": "BTC-Trend",
-        "hashRate": "Hash Rate",
+        "hashRate": "Mining Difficulty",
         "mining": "Mining",
         "fearGreed": "Angst &amp; Gier"
       }
